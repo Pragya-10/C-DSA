@@ -1,0 +1,37 @@
+# Project: CodeHelp
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = fibonacciseries.o primeno.o primeno1.o prime.o
+LINKOBJ  = fibonacciseries.o primeno.o primeno1.o prime.o
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -pg
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = CodeHelp.exe
+CXXFLAGS = $(CXXINCS) -m32 -pg
+CFLAGS   = $(INCS) -m32 -pg
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+fibonacciseries.o: fibonacciseries.cpp
+	$(CPP) -c fibonacciseries.cpp -o fibonacciseries.o $(CXXFLAGS)
+
+primeno.o: primeno.cpp
+	$(CPP) -c primeno.cpp -o primeno.o $(CXXFLAGS)
+
+primeno1.o: primeno1.cpp
+	$(CPP) -c primeno1.cpp -o primeno1.o $(CXXFLAGS)
+
+prime.o: prime.cpp
+	$(CPP) -c prime.cpp -o prime.o $(CXXFLAGS)
